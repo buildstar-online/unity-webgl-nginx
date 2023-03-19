@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mygame
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unity3d-webgl-demo
+  namespace: mygame
+spec:
+  selector:
+    matchLabels:
+      app: unity3d-webgl-demo
+  template:
+    metadata:
+      labels:
+        app: unity3d-webgl-demo
+    spec:
+      containers:
+      - name: mygame
+        image: nginx
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unity3d-webgl-demo-service
+  namespace: mygame
+spec:
+  selector:
+    app: unity3d-webgl-demo
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: unity3d-webgl-demo-ingress
+  namespace: mygame
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: mygame.domain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: unity3d-webgl-demo-service
+            port:
+              number: 5000
