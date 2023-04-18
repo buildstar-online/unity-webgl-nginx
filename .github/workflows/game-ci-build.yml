@@ -1,4 +1,4 @@
-name: Actions 😎
+name: Build Unity Project
 
 on: 
   #push: 
@@ -11,7 +11,7 @@ on:
         default: 'WebGL'
 jobs:
   build:
-    name: Build my project ✨
+    name: Build project ✨
     runs-on: ubuntu-latest
     steps:
       # Checkout
