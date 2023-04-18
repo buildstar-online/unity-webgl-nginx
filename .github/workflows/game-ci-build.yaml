@@ -11,7 +11,7 @@ on:
         default: 'WebGL'
 jobs:
   build:
-    name: Build project ✨
+    name: Build project
     runs-on: ubuntu-latest
     steps:
       # Checkout
