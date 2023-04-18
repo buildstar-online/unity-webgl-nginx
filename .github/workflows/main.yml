@@ -1,0 +1,13 @@
+name: Build Unity Project
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build project
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          lfs: true
