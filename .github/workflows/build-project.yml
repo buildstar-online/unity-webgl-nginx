@@ -23,8 +23,8 @@ jobs:
       # Cache
       - uses: actions/cache@v2
         with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          path: hello-world/Library
+          key: Library-${{ hashFiles('hello-world/Assets/**', 'hello-world/Packages/**', 'hello-world/ProjectSettings/**') }}
           restore-keys: |
             Library-
 
@@ -45,7 +45,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-          projectPath: hello-world
+          projectPath: ./hello-world
 
       # Output
       - uses: actions/upload-artifact@v2
