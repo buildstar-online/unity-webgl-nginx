@@ -62,7 +62,7 @@ jobs:
       # Copy artifact to docker build context
       - name: move artifact to context
         run: |
-          cp ./build/WebGL ./docker/
+          cp -r ./build/WebGL ./docker/
           ls -hal ./docker
           
       # Build Docker Image
