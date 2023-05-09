@@ -8,6 +8,7 @@ on:
       artifact_name:
         description: 'Artifact Name'
         required: true
+        default: 'WebGL'
       image_tag:
         description: 'Image Tag'
         required: true
@@ -45,10 +46,9 @@ jobs:
           github_token: ${{secrets.PAT}}
           name: ${{github.event.inputs.artifact_name}}
           
-      - name: Extract artifact into proper location
+      - name: Move atifact into proper location
         run: |
-          ls -hal
-          unzip $ARTIFACT_NAME.zip -d /docker/artifact
+          mv $ARTIFACT_NAME /docker/artifact
         shell: bash
         env:
           ARTIFACT_NAME: ${{github.event.inputs.artifact_name}}
