@@ -30,12 +30,15 @@ jobs:
         with:
           lfs: true
         
-      # Upload artifact to storage
-      - uses: actions/upload-artifact@v2
-        with:
+      # Download artifact from storage
+      - name: Download artifact
+        id: download-artifact
+        uses: dawidd6/action-download-artifact@v2
+        with: 
+          workflow: build-unity-artifact.yml
+          github_token: ${{secrets.PAT}}
           name: WebGL
-          path: build/WebGL
-          
+        
       # Build Docker Image
       - name: Docker meta
         id: meta
