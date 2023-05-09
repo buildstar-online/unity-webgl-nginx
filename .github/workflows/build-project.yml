@@ -21,7 +21,9 @@ jobs:
 
       # Fix permissions
       - name: Ensure proper file permissions
-        run: sudo chown $USER:$USER -R unity-webgl-nginx
+        run: |
+          ls -hal
+          sudo chown $USER:$USER -R unity-webgl-nginx
         shell: bash
         
       # Checkout
