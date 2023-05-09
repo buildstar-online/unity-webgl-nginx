@@ -47,6 +47,7 @@ jobs:
           
       - name: Extract artifact into proper location
         run: |
+          ls -hal
           unzip $ARTIFACT_NAME.zip -d /docker/artifact
         shell: bash
         env:
