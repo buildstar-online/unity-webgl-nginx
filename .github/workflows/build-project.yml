@@ -21,12 +21,12 @@ jobs:
           lfs: true
 
       # Cache
-      - uses: actions/cache@v2
-        with:
-          path: Library
-          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-          restore-keys: |
-            Library-
+      #- uses: actions/cache@v2
+      #  with:
+      #    path: Library
+      #    key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+      #    restore-keys: |
+      #      Library-
             
       - name: list dirs1
         run: ls -hal
@@ -39,10 +39,6 @@ jobs:
       #    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       #  with:
       #    githubToken: ${{ secrets.GITHUB_TOKEN }}
-      
-      - name: list dirs2
-        run: ls -hal
-        shell: bash
         
       # Build
       - name: Build project
@@ -53,9 +49,13 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-
+          
+      - name: list dirs2
+        run: ls -hal
+        shell: bash
+        
       # Output
       - uses: actions/upload-artifact@v2
         with:
-          name: Build
+          name: WebGL
           path: build
