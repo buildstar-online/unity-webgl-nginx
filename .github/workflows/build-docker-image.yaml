@@ -45,9 +45,9 @@ jobs:
           github_token: ${{secrets.PAT}}
           name: ${{github.event.inputs.artifact_name}}
           
-      - name: copy artifact into proper location
+      - name: Extract artifact into proper location
         run: |
-          mv $ARTIFACT_NAME /docker/artifa
+          unzip $ARTIFACT_NAME.zip -d /docker/artifact
         shell: bash
         env:
           ARTIFACT_NAME: ${{github.event.inputs.artifact_name}}
