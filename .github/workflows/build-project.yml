@@ -27,7 +27,11 @@ jobs:
           key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: |
             Library-
-
+            
+      - name: list dirs1
+        run: ls -hal
+        shell: bash
+        
       # Test
       #- name: Run tests
       #  uses: game-ci/unity-test-runner@v2
@@ -35,7 +39,11 @@ jobs:
       #    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
       #  with:
       #    githubToken: ${{ secrets.GITHUB_TOKEN }}
-
+      
+      - name: list dirs2
+        run: ls -hal
+        shell: bash
+        
       # Build
       - name: Build project
         uses: game-ci/unity-builder@v2
