@@ -25,16 +25,12 @@ jobs:
           lfs: true
 
       # Cache
-      #- uses: actions/cache@v2
-      #  with:
-      #    path: Library
-      #    key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
-      #    restore-keys: |
-      #      Library-
-            
-      - name: list dirs1
-        run: ls -hal
-        shell: bash
+      - uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            Library-
         
       # Test
       #- name: Run tests
@@ -45,6 +41,8 @@ jobs:
       #    githubToken: ${{ secrets.GITHUB_TOKEN }}
         
       # Build
+      # Can fail silently if activation file is invalid which will result 
+      # in a completed jib but an empty artifact directory
       - name: Build project
         uses: game-ci/unity-builder@v2
         env:
@@ -53,10 +51,6 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
-          
-      - name: list dirs2
-        run: ls -hal
-        shell: bash
         
       # Output
       - uses: actions/upload-artifact@v2
