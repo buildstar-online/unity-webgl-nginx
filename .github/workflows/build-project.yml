@@ -14,6 +14,10 @@ jobs:
     name: Build project
     runs-on: self-hosted
     steps:
+      - name: Ensure git lfs
+        run: sudo apt-get install git-lfs
+        shell: bash
+        
       # Checkout
       - name: Checkout repository
         uses: actions/checkout@v2
