@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     name: Build project
-    runs-on: bradley-vm
+    runs-on: ubuntu-latest
     steps:
       # Checkout
       - name: Checkout repository
