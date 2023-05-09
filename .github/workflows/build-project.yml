@@ -18,6 +18,11 @@ jobs:
       - name: Ensure git lfs
         run: sudo apt-get install git-lfs
         shell: bash
+
+      # Fix permissions
+      - name: Ensure proper file permissions
+        run: sudo chown $USER:$USER -R unity-webgl-nginx
+        shell: bash
         
       # Checkout
       - name: Checkout repository
