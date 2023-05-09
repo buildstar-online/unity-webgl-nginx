@@ -1,0 +1,62 @@
+name: BuildProject
+
+on: 
+  #push: 
+  #pull_request:
+  workflow_dispatch:
+    inputs:
+      artifact_name:
+        description: 'Artifact Name'
+        required: true
+      image_tag:
+        description: 'Image Tag'
+        required: true
+        default: 'latest'
+jobs:
+  build:
+    name: Build project
+    runs-on: self-hosted
+    steps:
+      # Fix permissions
+      - name: Ensure proper file permissions
+        run: |
+          ls -hal
+          sudo chown $USER:$USER -R ../unity-webgl-nginx
+        shell: bash
+        
+      # Checkout
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+        
+      # Upload artifact to storage
+      - uses: actions/upload-artifact@v2
+        with:
+          name: WebGL
+          path: build/WebGL
+          
+      # Build Docker Image
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: deserializeme/unity-webgl-nginx
+          tags: latest
+        
+      # Login to Dockerhub
+      - name: Login to DockerHub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          
+      # Push docker image
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./docker
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
