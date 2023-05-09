@@ -14,6 +14,7 @@ jobs:
     name: Build project
     runs-on: self-hosted
     steps:
+      # Install deps
       - name: Ensure git lfs
         run: sudo apt-get install git-lfs
         shell: bash
@@ -40,7 +41,7 @@ jobs:
       #  with:
       #    githubToken: ${{ secrets.GITHUB_TOKEN }}
         
-      # Build
+      # Build Unity Project
       # Can fail silently if activation file is invalid which will result 
       # in a completed jib but an empty artifact directory
       - name: Build project
@@ -52,11 +53,17 @@ jobs:
         with:
           targetPlatform: WebGL
         
-      # Output
+      # Upload artifact to storage
       - uses: actions/upload-artifact@v2
         with:
           name: WebGL
           path: build/WebGL
+          
+      # Copy artifact to docker build context
+      - name: move artifact to context
+        run: |
+          cp ./build/WebGL ./docker/
+          ls -hal ./docker
           
       # Build Docker Image
       - name: Docker meta
@@ -65,7 +72,8 @@ jobs:
         with:
           images: deserializeme/unity-webgl-nginx
           tags: latest
-          
+        
+      # Login to Dockerhub
       - name: Login to DockerHub
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
@@ -73,10 +81,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           
+      # Push docker image
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./docker
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
