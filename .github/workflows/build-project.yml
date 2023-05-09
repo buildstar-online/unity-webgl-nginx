@@ -21,10 +21,9 @@ jobs:
         
       # Checkout
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           lfs: true
-          path: '~/unity-webgl-nginx'
 
       # Cache
       - uses: actions/cache@v2
