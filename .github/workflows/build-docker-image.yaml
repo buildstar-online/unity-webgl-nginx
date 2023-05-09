@@ -48,7 +48,7 @@ jobs:
           
       - name: Move atifact into proper location
         run: |
-          mv $ARTIFACT_NAME /docker/artifact
+          mv $ARTIFACT_NAME ./docker/artifact
         shell: bash
         env:
           ARTIFACT_NAME: ${{github.event.inputs.artifact_name}}
