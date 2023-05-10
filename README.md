@@ -1,8 +1,8 @@
 # Unity WebGL Template Repo 
 
-This repo contains the resources needed to build and deploy a Unity3D WebGL project using [GameCI](https://game.ci/), [Kubernetes](https://kubernetes.io/) and [ArgoCD](https://argo-cd.readthedocs.io/en/stable/). A live demo deployment is available at http://webgl-nginx.buildstars.online/.
+This repo contains the resources and workflows required to build and deploy a Unity3D WebGL project using [GameCI](https://game.ci/), [Kubernetes](https://kubernetes.io/) and [ArgoCD](https://argo-cd.readthedocs.io/en/stable/). A live demo deployment is available at http://webgl-nginx.buildstars.online/.
 
-<img width="960" alt="Screenshot 2023-05-10 at 08 17 15" src="https://github.com/buildstars-online/unity-webgl-nginx/assets/84841307/2a05bfc3-b665-4df6-a28d-8a01c06da4c8">
+<img width="600" alt="Screenshot 2023-05-10 at 08 17 15" src="https://github.com/buildstars-online/unity-webgl-nginx/assets/84841307/2a05bfc3-b665-4df6-a28d-8a01c06da4c8">
 
 ## Prerequisites
 
