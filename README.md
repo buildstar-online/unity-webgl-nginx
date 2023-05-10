@@ -8,7 +8,7 @@ This repo contains the resources and workflows required to build and deploy a Un
 
 ## Prerequisites
 
-A Kubernetes cluster running [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and The [Kubernetes Ingress-Nginx](https://github.com/kubernetes/ingress-nginx) controller. 
+A Kubernetes cluster running [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and the [Kubernetes Ingress-Nginx](https://github.com/kubernetes/ingress-nginx) controller. 
 If you do not have a clister or single-node available, the following resources can guide you through using Terraform to create one using various cloud providers.
 
 - [Equinix Metal](https://github.com/buildstars-online/modules-equinix-tf-spot)
