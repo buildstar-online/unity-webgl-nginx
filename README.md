@@ -6,6 +6,10 @@ This repo contains the resources and workflows required to build and deploy a Un
 <img width="600" alt="Screenshot 2023-05-10 at 08 17 15" src="https://github.com/buildstars-online/unity-webgl-nginx/assets/84841307/2a05bfc3-b665-4df6-a28d-8a01c06da4c8">
 </p>
 
+<p align="center">
+<img width="600" alt="Screenshot 2023-05-10 at 08 25 04" src="https://github.com/buildstars-online/unity-webgl-nginx/assets/84841307/8fdf7ecf-425e-458f-8550-caf84789d426">
+</p>
+
 ## Prerequisites
 
 A Kubernetes cluster running [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and the [Kubernetes Ingress-Nginx](https://github.com/kubernetes/ingress-nginx) controller. 
