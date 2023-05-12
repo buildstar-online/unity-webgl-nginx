@@ -1,1 +1,31 @@
+name: Run Passmark Benchmark
 
+on: 
+  #push: 
+  #pull_request:
+  workflow_dispatch:
+jobs:
+  benchmark-gha-hosted:
+    name: Run Passmark on Github Hosted Runner
+    runs-on: ubuntu-latest
+    steps:
+      # Install dependancies and Download Passmark
+      - name: Install deps
+        run: |
+          sudo apt-get update && \
+          sudo apt-get install -y zip libncurses5 wget && \
+          wget https://www.passmark.com/downloads/pt_linux_x64.zip && \
+          unzip pt_linux_x64.zip
+        shell: bash
+      
+      # Fix permissions
+      - name: Run Benchmark
+        run: |
+          ./PerformanceTest/pt_linux_x64 -p $(nproc --all) -d 1 -i 1 -r 3
+        shell: bash
+        
+      # Upload artifact to storage
+      - uses: actions/upload-artifact@v2
+        with:
+          name: results_all.yml
+          path: ./results_all.yml
