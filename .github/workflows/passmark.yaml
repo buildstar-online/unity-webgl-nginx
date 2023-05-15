@@ -7,7 +7,7 @@ on:
 jobs:
   benchmark-gha-hosted:
     name: Run Passmark on Github Hosted Runner
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       # Install dependancies and Download Passmark
       - name: Install deps
