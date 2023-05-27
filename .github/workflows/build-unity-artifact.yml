@@ -9,6 +9,10 @@ on:
         description: 'target build platform'
         required: true
         default: 'WebGL'
+      custom_image:
+        description: 'Custom image name'
+        required: true
+        default: '2022.1.23f1'
 jobs:
   build:
     name: Build project
@@ -59,6 +63,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: WebGL
+          customImage: 'unityci/editor:2020.1.14f1-base-0'
         
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
