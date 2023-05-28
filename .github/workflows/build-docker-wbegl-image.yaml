@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build Docker WebGL Image
 
 on: 
   #push: 
@@ -13,6 +13,7 @@ on:
         description: 'Image Tag'
         required: true
         default: 'latest'
+
 jobs:
   build:
     name: Build project
