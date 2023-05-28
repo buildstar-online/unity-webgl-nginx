@@ -8,7 +8,7 @@ on:
       target_platform:
         description: 'target build platform'
         required: true
-        default: 'WebGL'
+        default: '["WebGL", "StandaloneLinux64"]'
       custom_image:
         description: 'Custom image name'
         required: true
@@ -72,5 +72,5 @@ jobs:
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
         with:
-          name: WebGL
-          path: build/WebGL
+          name: Build-${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
