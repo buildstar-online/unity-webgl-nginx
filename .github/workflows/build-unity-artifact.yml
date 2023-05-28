@@ -12,11 +12,15 @@ on:
       custom_image:
         description: 'Custom image name'
         required: true
-        default: '2022.1.23f1'
+        default: 'unityci/editor:2020.1.14f1-base-0'
 jobs:
   build:
-    name: Build project
-    runs-on: self-hosted
+    name: Build for ${{ matrix.targetPlatform }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform: ["StandaloneLinux64", "WebGL"]
     steps:
       # Install deps
       - name: Ensure git lfs
@@ -62,8 +66,8 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          targetPlatform: WebGL
-          customImage: 'unityci/editor:2020.1.14f1-base-0'
+          targetPlatform: ${{ matrix.targetPlatform }}
+          customImage: ${{github.event.inputs.custom_image}}
         
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
