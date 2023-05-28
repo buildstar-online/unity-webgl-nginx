@@ -8,7 +8,7 @@ on:
       artifact_name:
         description: 'Artifact Name'
         required: true
-        default: 'Build-WebGL'
+        default: 'WebGL'
       image_tag:
         description: 'Image Tag'
         required: true
