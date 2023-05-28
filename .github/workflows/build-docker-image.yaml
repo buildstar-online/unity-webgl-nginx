@@ -1,4 +1,4 @@
-name: Build Docker WebGL Image
+name: Build Docker Image
 
 on: 
   #push: 
@@ -8,7 +8,7 @@ on:
       artifact_name:
         description: 'Artifact Name'
         required: true
-        default: 'WebGL'
+        default: 'Build-WebGL'
       image_tag:
         description: 'Image Tag'
         required: true
