@@ -17,7 +17,7 @@ on:
 jobs:
   build:
     name: Build project
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       # Fix permissions
       - name: Install deps
