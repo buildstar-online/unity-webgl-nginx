@@ -57,7 +57,7 @@ jobs:
       # Can fail silently if activation file is invalid which will result 
       # in a completed jib but an empty artifact directory
       - name: Build project
-        uses: cloudymax/unity-builder@9cfea30404a76082b7eb0fcfd04174c50c7827ca
+        uses: cloudymax/unity-builder@be133f463c2582145bcd46428a8b315163e691f1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
