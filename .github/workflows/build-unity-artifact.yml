@@ -64,6 +64,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+          customImage: 'deserializeme/editor:ubuntu-2022.1.23f1-webgl-1-nvidia'
         
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
