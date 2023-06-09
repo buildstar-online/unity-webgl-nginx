@@ -8,7 +8,7 @@ on:
       target_platform:
         description: 'target build platform'
         required: true
-        default: '["WebGL", "StandaloneLinux64"]'
+        default: '["WebGL"]'
 
 jobs:
   build:
@@ -57,7 +57,7 @@ jobs:
       # Can fail silently if activation file is invalid which will result 
       # in a completed jib but an empty artifact directory
       - name: Build project
-        uses: cloudymax/unity-builder@main
+        uses: cloudymax/unity-builder@v0.0.2 
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
