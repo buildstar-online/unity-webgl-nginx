@@ -44,7 +44,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: webgl-nginx.buildstars.online
+  - host: webgl-nginx.buildstar.online
     http:
       paths:
       - path: /
