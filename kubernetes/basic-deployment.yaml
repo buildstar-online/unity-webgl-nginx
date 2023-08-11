@@ -54,8 +54,8 @@ spec:
       auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
   tls:
     - hosts:
-      - vouch.buildstar.online
-      secretName: "plarts-tls"
+      - webgl-nginx.buildstar.online
+      secretName: "webgl-nginx-tls"
   rules:
   - host: webgl-nginx.buildstar.online
     http:
