@@ -37,7 +37,6 @@ kind: Ingress
 metadata:
   name: webgl-nginx-ingress
   namespace: webgl-nginx
-spec:
   ingressClassName: nginx
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -48,6 +47,7 @@ spec:
       auth_request_set $auth_resp_jwt $upstream_http_x_vouch_jwt;
       auth_request_set $auth_resp_err $upstream_http_x_vouch_err;
       auth_request_set $auth_resp_failcount $upstream_http_x_vouch_failcount;
+spec:
   tls:
     - hosts:
       - webgl-nginx.buildstar.online
