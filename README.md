@@ -15,7 +15,7 @@ View the live site [HERE](http://webgl-nginx.buildstar.online/) - requires googl
 ## Prerequisites
 
 A Kubernetes cluster running [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and the [Kubernetes Ingress-Nginx](https://github.com/kubernetes/ingress-nginx) controller. 
-If you do not have a clister or single-node available, the following resources can guide you through using Terraform to create one using various cloud providers.
+If you do not have a cluster or single-node available, the following resources can guide you through using Terraform to create one using various cloud providers.
 
 - [Equinix Metal](https://github.com/buildstars-online/modules-equinix-tf-spot)
 - [Azure](https://github.com/buildstars-online/azure-tf-starter)
