@@ -60,7 +60,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: deserializeme/unity-webgl-nginx
-          tags: latest
+          tags: ${{github.event.inputs.image_tag}}
         
       # Login to Dockerhub
       - name: Login to DockerHub
