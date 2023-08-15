@@ -24,15 +24,23 @@ Demo site <a href="http://webgl-nginx.buildstar.online/">HERE</a>
 ## Contents
 
 Workflows:
-- Activate License
-- Build a Unity WebGL artifact
-- Build a Nginx Container
+- [Activate License](https://github.com/buildstar-online/unity-webgl-nginx/blob/main/.github/workflows/activation.yml)
+- [Build a Unity WebGL artifact using a custom image](https://github.com/buildstar-online/unity-webgl-nginx/blob/main/.github/workflows/build-unity-artifact.yml)
+
+<p align="center">
+<img width="325" alt="Screenshot 2023-08-15 at 14 47 34" src="https://github.com/buildstar-online/unity-webgl-nginx/assets/84841307/c46a73cf-1d23-45e6-bc6c-53af9a6c7095">
+</p>
+
+- [Build a Nginx Container](https://github.com/buildstar-online/unity-webgl-nginx/blob/main/.github/workflows/build-docker-image.yaml)
+
+<p align="center">
+<img width="325" alt="Screenshot 2023-08-15 at 14 47 49" src="https://github.com/buildstar-online/unity-webgl-nginx/assets/84841307/fb9fc851-d508-4779-afc8-66b28a95cfe1">
+</p>
 
 Templates:
-- Kubernetes Deployment
-- ArgoCD Application
-- Nginx Dockerfile & config
-- Basic Unity3D project 
+- [Kubernetes Deployment](https://github.com/buildstar-online/unity-webgl-nginx/blob/main/kubernetes/basic-deployment.yaml)
+- [ArgoCD Application](https://github.com/buildstar-online/unity-webgl-nginx/blob/main/argo-app.yaml)
+- [Nginx Dockerfile & config](https://github.com/buildstar-online/unity-webgl-nginx/tree/main/docker)
 
 
 ## Requirements
