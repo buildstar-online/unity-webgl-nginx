@@ -1,4 +1,4 @@
-# Unity WebGL on Kubernetes
+# Unity WebGL on Kubernetes with ArgoCD
 
 This repo contains the resources and workflows required to build and deploy a Unity3D WebGL project using [GameCI](https://game.ci/), [Kubernetes](https://kubernetes.io/) and [ArgoCD](https://argo-cd.readthedocs.io/en/stable/).
 
