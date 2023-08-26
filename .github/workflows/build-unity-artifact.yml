@@ -20,7 +20,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        targetPlatform: ["${{github.event.inputs.target_platform}}"]
+        targetPlatform: 
+          - "${{github.event.inputs.target_platform}}"
     steps:
       # Install deps
       - name: Ensure git lfs
