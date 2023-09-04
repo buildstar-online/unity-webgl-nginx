@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webgl-nginx
+  namespace: webgl-nginx
+spec:
+  selector:
+    matchLabels:
+      app: webgl-nginx
+  template:
+    metadata:
+      labels:
+        app: webgl-nginx
+    spec:
+      containers:
+      - name: webgl-nginx
+        image: deserializeme/unity-webgl-nginx:v0.0.1
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webgl-nginx-service
+  namespace: webgl-nginx
+spec:
+  externalTrafficPolicy: Local
+  ipFamilies:
+    - IPv4
+  selector:
+    app: webgl-nginx
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 80
+  type: LoadBalancer
