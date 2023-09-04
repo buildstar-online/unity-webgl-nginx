@@ -45,17 +45,19 @@ Templates:
 
 ## Requirements
 
-A Kubernetes cluster running [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and the [Kubernetes Ingress-Nginx](https://github.com/kubernetes/ingress-nginx) controller. 
-If you do not have a cluster or single-node available, the following resources can guide you through using Terraform to create one using various cloud providers.
+You will need either a Kubernetes cluster running [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) and the [Kubernetes Ingress-Nginx](https://github.com/kubernetes/ingress-nginx) controller, a virtual machine, or a bare-metal host.
+
+If you do not have any of those available, the following resources can guide you through using Terraform to create one using various cloud providers.
 
 - [Equinix Metal](https://github.com/buildstars-online/modules-equinix-tf-spot)
 - [Azure](https://github.com/buildstars-online/azure-tf-starter)
 - [Google Cloud Platform](https://github.com/buildstars-online/gcp-tf-starter)
 - [Amazon Web Services](https://github.com/buildstars-online/modules-aws-ec2)
 
-For Bare Meatl and Single-Node installations, I advise using [K3s](https://k3s.io/). For a batteries-included installation, my preference is to set it up via [smol-k8s-lab](https://github.com/small-hack/smol-k8s-lab) which installs ArgoCD, Nginx, CertManager, and Metallb.
 
-## Quick Start
+## k3s Quick Start
+
+I advise using [K3s](https://k3s.io/) as it's very easy to deploy on Bare Metal and VMs as Single-Node cluster. This example shows a minimum-viable deployment.
 
 1. Download and install K3s
 
@@ -92,3 +94,4 @@ For Bare Meatl and Single-Node installations, I advise using [K3s](https://k3s.i
     ```bash
     /usr/local/bin/k3s-uninstall.sh
     ```
+
