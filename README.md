@@ -54,3 +54,41 @@ If you do not have a cluster or single-node available, the following resources c
 - [Amazon Web Services](https://github.com/buildstars-online/modules-aws-ec2)
 
 For Bare Meatl and Single-Node installations, I advise using [K3s](https://k3s.io/). For a batteries-included installation, my preference is to set it up via [smol-k8s-lab](https://github.com/small-hack/smol-k8s-lab) which installs ArgoCD, Nginx, CertManager, and Metallb.
+
+## Quick Start
+
+1. Download and install K3s
+
+    ```bash
+    curl -sfL https://get.k3s.io | sh - 
+    ```
+
+2. Wait for node to be ready
+
+    ```bash
+    sudo k3s kubectl get node
+    NAME   STATUS   ROLES                  AGE   VERSION
+    vm0    Ready    control-plane,master   1m   v1.27.4+k3s1
+    ```
+
+3. Create the deployment and expose the service with a load-balancer
+
+    ```bash
+    sudo kubectl create -f https://raw.githubusercontent.com/buildstar-online/unity-webgl-nginx/main/kubernetes/default-k3s-deployment.yaml
+    ```
+
+4. Get the External-IP and port for the service
+
+    ```bash
+    sudo kubectl get svc -n webgl-nginx
+    NAME                  TYPE           CLUSTER-IP      EXTERNAL-IP      PORT(S)          AGE
+    webgl-nginx-service   LoadBalancer   10.43.113.106   192.168.50.101   8080:30262/TCP   22m
+    ```
+
+4. Vist the site in your browser at `http://<external-ip>:8080/`
+
+5. Cleanup
+
+    ```bash
+    /usr/local/bin/k3s-uninstall.sh
+    ```
