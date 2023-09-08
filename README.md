@@ -13,7 +13,7 @@ Resources and Workflows to build & deploy Unity3D WebGL builds using <br>
   <a href="https://game.ci/">GameCI</a>, <a href="https://kubernetes.io/">Kubernetes</a> and <a href="https://argo-cd.readthedocs.io/en/stable/">ArgoCD</a>.
 <br>
 <br>
-Demo site <a href="http://webgl-nginx.buildstar.online/">HERE</a>
+Demo site <a href="http://webgl-nginx.buildstar.online/">Down for Maintenance</a>
 </p>
 <br>
 <p align="center">
