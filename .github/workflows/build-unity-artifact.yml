@@ -58,7 +58,7 @@ jobs:
       # Can fail silently if activation file is invalid which will result 
       # in a completed jib but an empty artifact directory
       - name: Build project
-        uses: cloudymax/unity-builder@new-param
+        uses: cloudymax/unity-builder@add-nvidia-opts
         env:
           DISPLAY: |
             :0
