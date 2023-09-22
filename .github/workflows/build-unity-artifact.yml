@@ -61,7 +61,7 @@ jobs:
       # Can fail silently if activation file is invalid which will result 
       # in a completed jib but an empty artifact directory
       - name: Build project
-        uses: game-ci/unity-builder@main
+        uses: cloudymax/unity-builder@main
         env:
           DISPLAY: |
             :0
