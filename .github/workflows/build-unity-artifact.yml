@@ -9,10 +9,7 @@ on:
         description: 'target build platform'
         required: true
         default: 'WebGL'
-      editor_image:
-        description: 'image repo/name:tag'
-        required: true
-        default: 'deserializeme/editor:ubuntu-2022.1.23f1-webgl-1-nvidia'
+
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
@@ -70,7 +67,6 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          customImage: "${{github.event.inputs.editor_image}}"
           nvidiaGpus: "all"
         
       # Upload artifact to storage
