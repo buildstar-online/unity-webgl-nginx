@@ -61,7 +61,7 @@ jobs:
       # Can fail silently if activation file is invalid which will result 
       # in a completed jib but an empty artifact directory
       - name: Build project
-        uses: cloudymax/unity-builder-gpu-testing@main
+        uses: cloudymax/unity-builder-gpu-testing@v0
         env:
           DISPLAY: |
             :0
@@ -71,8 +71,6 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           customImage: "${{github.event.inputs.editor_image}}"
-          fetch-depth: 0
-          ref: main
         
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
