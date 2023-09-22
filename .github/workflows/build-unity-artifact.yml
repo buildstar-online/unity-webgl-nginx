@@ -8,7 +8,7 @@ on:
       target_platform:
         description: 'target build platform'
         required: true
-        default: '"WebGL"'
+        default: 'WebGL'
       editor_image:
         description: 'image repo/name:tag'
         required: true
