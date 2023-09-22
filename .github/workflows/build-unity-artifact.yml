@@ -71,6 +71,8 @@ jobs:
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
           customImage: "${{github.event.inputs.editor_image}}"
+          fetch-depth: 0
+          ref: main
         
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
