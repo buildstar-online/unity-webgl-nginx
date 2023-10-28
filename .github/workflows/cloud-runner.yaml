@@ -1,0 +1,48 @@
+name: Cloud Runner
+
+on: 
+  #push: 
+  #pull_request:
+  workflow_dispatch:
+    inputs:
+      target_platform:
+        description: 'target build platform'
+        required: true
+        default: 'WebGL'
+
+jobs:
+  build:
+    name: Build for ${{ matrix.targetPlatform }}
+    runs-on: [self-hosted]
+    strategy:
+      fail-fast: false
+      matrix:
+        targetPlatform: 
+          - "${{github.event.inputs.target_platform}}"
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-west-2
+          http-proxy: "http://85.10.207.26:32000"
+
+      - uses: game-ci/unity-builder@cloud-runner-develop
+        id: k8s-unity-build
+        with:
+          providerStrategy: k8s
+          versioning: None
+          projectPath: .
+          unityVersion: 2021.3.18f1
+          targetPlatform: ${{ matrix.targetPlatform }}
+          gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
+          # You may want to export your builds somewhere external so you can access it:
+          containerHookFiles: aws-s3-upload-build
+          kubeConfig: ${{ secrets.KUBECONFIG }}
+        
+      # Upload artifact to storage
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.targetPlatform }}
+          path: build/${{ matrix.targetPlatform }}
