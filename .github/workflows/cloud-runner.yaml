@@ -36,6 +36,7 @@ jobs:
           gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
           # You may want to export your builds somewhere external so you can access it:
           containerHookFiles: aws-s3-upload-build
+          kubeConfig: ${{ secrets.KUBECONFIG }}
         env:
           AWS_S3_BUCKET: artifacts
           AWS_S3_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
