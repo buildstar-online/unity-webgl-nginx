@@ -9,7 +9,13 @@ on:
         description: 'target build platform'
         required: true
         default: 'WebGL'
-
+env:
+  CLOUD_RUNNER_BRANCH: ${{ github.ref }}
+  CLOUD_RUNNER_DEBUG: true
+  CLOUD_RUNNER_DEBUG_TREE: true
+  DEBUG: true
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+  
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
