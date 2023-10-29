@@ -30,10 +30,12 @@ jobs:
 
       - name: test kubectl
         run: |
+          echo ${kube_config} | base64 -d > ${KUBECONFIG}
+          kubectl config use-context default
           kubectl get nodes -A
         shell: bash
         env:
-          KUBECONFIG: ${{ secrets.KUBECONFIG }}
+          kube_config: ${{ secrets.KUBECONFIG }}
           
       - uses: game-ci/unity-builder@cloud-runner-develop
         id: k8s-unity-build
