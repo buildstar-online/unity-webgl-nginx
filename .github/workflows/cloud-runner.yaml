@@ -19,7 +19,7 @@ jobs:
         targetPlatform: 
           - "${{github.event.inputs.target_platform}}"
     steps:
-      - uses: game-ci/unity-builder@v3
+      - uses: game-ci/unity-builder@v2
         id: k8s-unity-build
         with:
           providerStrategy: k8s
