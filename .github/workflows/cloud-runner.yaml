@@ -19,22 +19,21 @@ jobs:
         targetPlatform: 
           - "${{github.event.inputs.target_platform}}"
     steps:
-      
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           lfs: true
-
-      - uses: azure/setup-kubectl@v3
+      
+      - name: install kubectl
+        uses: azure/setup-kubectl@v3
         id: install
 
       - name: Create kubeconfig
         run: |
           mkdir ${HOME}/.kube
           echo ${{ secrets.KUBECONFIG }} | base64 --decode > ${HOME}/.kube/config
-          cat ${HOME}/.kube/config
           
-      - name: Use context
+      - name: Select Context
         run: kubectl config use-context default
       
       - name: Test k8s
