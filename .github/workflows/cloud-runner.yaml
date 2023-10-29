@@ -28,7 +28,6 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
           projectPath: .
-          cloudRunnerCluster: k8s
           cloudRunnerMemory: 4096
           cloudRunnerCpu: 2048
           kubeConfig: ${{ secrets.KUBECONFIG }}
