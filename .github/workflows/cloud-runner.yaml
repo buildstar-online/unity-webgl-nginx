@@ -9,13 +9,6 @@ on:
         description: 'target build platform'
         required: true
         default: 'WebGL'
-env:
-  CLOUD_RUNNER_BRANCH: ${{ github.ref }}
-  CLOUD_RUNNER_DEBUG: true
-  CLOUD_RUNNER_DEBUG_TREE: true
-  DEBUG: true
-  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-  
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
@@ -34,15 +27,15 @@ jobs:
           unityVersion: 2021.3.18f1
           targetPlatform: ${{ matrix.targetPlatform }}
           gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
-          # You may want to export your builds somewhere external so you can access it:
-          containerHookFiles: aws-s3-upload-build
-          kubeConfig: ${{ secrets.KUBECONFIG }}
+          cloudRunnerCluster: k8s
+          projectPath: .
         env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           AWS_S3_BUCKET: artifacts
           AWS_S3_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_S3_SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_ENDPOINT: http://85.10.207.26:32000
-          KUBECONFIG: ${{ secrets.KUBECONFIG }}
+          kubeConfig: ${{ secrets.KUBECONFIG }}
         
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
