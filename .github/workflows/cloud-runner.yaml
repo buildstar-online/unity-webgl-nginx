@@ -33,7 +33,7 @@ jobs:
           kubectl get nodes -A
         shell: bash
         env:
-          kubeConfig: ${{ secrets.KUBECONFIG }}
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
           
       - uses: game-ci/unity-builder@cloud-runner-develop
         id: k8s-unity-build
