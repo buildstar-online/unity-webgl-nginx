@@ -22,18 +22,20 @@ jobs:
       - uses: game-ci/unity-builder@v2
         id: k8s-unity-build
         with:
-          providerStrategy: k8s
           versioning: None
           unityVersion: 2021.3.18f1
           targetPlatform: ${{ matrix.targetPlatform }}
           gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
           projectPath: .
-          containerHookFiles: aws-s3-upload-build
+          cloudRunnerCluster: k8s
+          cloudRunnerMemory: 4096
+          cloudRunnerCpu: 2048
+          kubeConfig: ${{ secrets.KUBECONFIG }}
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           AWS_S3_BUCKET: artifacts
           AWS_S3_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_S3_SECRET_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_S3_ENDPOINT: http://85.10.207.26:32000
-          kubeConfig: ${{ secrets.KUBECONFIG }}
+          
         
