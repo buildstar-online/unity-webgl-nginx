@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     name: Build for ${{ matrix.targetPlatform }}
-    runs-on: [self-hosted]
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
