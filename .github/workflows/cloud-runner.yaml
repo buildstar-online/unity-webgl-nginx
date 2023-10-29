@@ -28,6 +28,7 @@ jobs:
           targetPlatform: ${{ matrix.targetPlatform }}
           gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
           projectPath: .
+          containerHookFiles: aws-s3-upload-build
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           AWS_S3_BUCKET: artifacts
@@ -36,8 +37,3 @@ jobs:
           AWS_S3_ENDPOINT: http://85.10.207.26:32000
           kubeConfig: ${{ secrets.KUBECONFIG }}
         
-      # Upload artifact to storage
-      - uses: actions/upload-artifact@v2
-        with:
-          name: ${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
