@@ -28,14 +28,17 @@ jobs:
       - uses: azure/setup-kubectl@v3
         id: install
 
-      - name: test kubectl
+      - name: Create kubeconfig
         run: |
-          echo ${kube_config} | base64 -d > ${KUBECONFIG}
-          kubectl config use-context default
-          kubectl get nodes -A
-        shell: bash
-        env:
-          kube_config: ${{ secrets.KUBECONFIG }}
+          mkdir ${HOME}/.kube
+          echo ${{ secrets.KUBECONFIG }} | base64 --decode > ${HOME}/.kube/config
+          cat ${HOME}/.kube/config
+          
+      - name: Use context
+        run: kubectl config use-context default
+      
+      - name: Test k8s
+        run: kubectl get nodes -A
           
       - uses: game-ci/unity-builder@cloud-runner-develop
         id: k8s-unity-build
