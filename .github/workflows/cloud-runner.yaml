@@ -48,7 +48,7 @@ jobs:
           unityVersion: 2021.3.18f1
           targetPlatform: ${{ matrix.targetPlatform }}
           gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
-          kubeConfig: ${{ secrets.KUBECONFIG }}
+          kubeStorageClass: local-path
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           AWS_S3_BUCKET: artifacts
