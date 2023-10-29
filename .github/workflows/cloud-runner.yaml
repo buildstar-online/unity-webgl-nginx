@@ -19,6 +19,12 @@ jobs:
         targetPlatform: 
           - "${{github.event.inputs.target_platform}}"
     steps:
+      
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          lfs: true
+          
       - uses: game-ci/unity-builder@cloud-runner-develop
         id: k8s-unity-build
         with:
