@@ -22,6 +22,7 @@ jobs:
       - uses: game-ci/unity-builder@cloud-runner-develop
         id: k8s-unity-build
         with:
+          cloudRunnerTests: true
           providerStrategy: k8s
           versioning: None
           projectPath: .
