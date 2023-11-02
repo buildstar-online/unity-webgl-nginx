@@ -39,7 +39,7 @@ jobs:
       - name: Test k8s
         run: kubectl get nodes -A
           
-      - uses: game-ci/unity-builder@cloud-runner-develop
+      - uses: game-ci/unity-builder@v3
         id: k8s-unity-build
         with:
           providerStrategy: k8s
