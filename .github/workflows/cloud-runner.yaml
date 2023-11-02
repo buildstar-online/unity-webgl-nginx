@@ -50,8 +50,8 @@ jobs:
           gitPrivateToken: ${{ secrets.GITHUB_TOKEN }}
           kubeStorageClass: local-path
           kubeVolumeSize: 10Gi
-          containerMemory: 4096
-          containerCpu: 4000
+          # containerMemory: 4096
+          # containerCpu: 4000
           containerHookFiles: aws-s3-upload-build
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
