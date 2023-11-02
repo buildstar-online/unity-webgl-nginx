@@ -53,10 +53,10 @@ jobs:
           ########################
           # Develop branch options
           #######################
-          # providerStrategy: k8s
+          # cloudRunnerCluster: k8s
           # containerMemory: 4096
           # containerCpu: 4000
-          cloudRunnerCluster: k8s
+          providerStrategy: k8s
           containerHookFiles: aws-s3-upload-build
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
