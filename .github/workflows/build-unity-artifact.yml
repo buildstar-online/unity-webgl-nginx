@@ -58,7 +58,7 @@ jobs:
       # Can fail silently if activation file is invalid which will result 
       # in a completed jib but an empty artifact directory
       - name: Build project
-        uses: cloudymax/unity-builder@nvidia-gpu-support
+        uses: gameci/unity-builder@v4.1.1
         env:
           DISPLAY: |
             :0
@@ -67,7 +67,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
-          nvidiaGpus: "all"
+          #nvidiaGpus: "all"
         
       # Upload artifact to storage
       - uses: actions/upload-artifact@v2
