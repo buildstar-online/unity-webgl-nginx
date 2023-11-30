@@ -20,6 +20,11 @@ jobs:
         targetPlatform: 
           - "${{github.event.inputs.target_platform}}"
     steps:
+    
+      - name: Set owner of working dir recurively (Linux)
+        if: ${{ inputs.build_platform == 'linux' }}
+        run: sudo chown -R $(whoami) .
+        
       # Install deps
       - name: Ensure git lfs
         run: sudo apt-get install git-lfs
