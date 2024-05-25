@@ -1,12 +1,6 @@
 <h1 align=center>
-WebGL on Kubernetes w/ ArgoCD
+WebGL on Kubernetes
 </h1>
-
-<p align="center">
-  <img width="64" src="https://icons-for-free.com/iconfiles/png/512/kubernetes-1331550890056502145.png">
-  <img width="64" src="https://icons-for-free.com/iconfiles/png/512/argocd-1331550886883580947.png">
-  <img width="64" src="https://cdn4.iconfinder.com/data/icons/logos-brands-5/24/unity-1024.png">
-<p>
 
 <p align=center>
 Resources and Workflows to build & deploy Unity3D WebGL builds using <br>
