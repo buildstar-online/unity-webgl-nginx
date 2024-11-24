@@ -21,7 +21,7 @@ jobs:
       # Fix permissions
       - name: Run Benchmark
         run: |
-          TERM=xterm-256color ./PerformanceTest/pt_linux_x64 -p $(nproc --all) -d 3 -i 5 -r 3
+          TERM=xterm-256color ./PerformanceTest/pt_linux_x64 -p $(nproc --all) -d 1 -i 1 -r 1
         shell: bash
         
       # Upload artifact to storage
