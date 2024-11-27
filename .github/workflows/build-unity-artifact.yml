@@ -77,7 +77,7 @@ jobs:
           nvidiaGpus: "all"
         
       # Upload artifact to storage
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
