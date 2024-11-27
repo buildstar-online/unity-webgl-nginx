@@ -44,7 +44,7 @@ jobs:
       # Download artifact from storage
       - name: Download artifact
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v6
         with: 
           workflow: build-unity-artifact.yml
           github_token: ${{secrets.PAT}}
